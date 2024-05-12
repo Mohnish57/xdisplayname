@@ -9,6 +9,7 @@ function FullName() {
   console.log(formData);
 
   const [output, setOutput] = useState("");
+  let fullname = true;
 
   const handleChange = (e) => {
     let name = e.target.name;
@@ -21,8 +22,12 @@ function FullName() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    const result = formData.firstName + " " + formData.lastName;
-    setOutput(result);
+    if (formData.firstName && formData.lastName) {
+      const result = formData.firstName + " " + formData.lastName;
+      setOutput(result);
+    } else {
+      fullname = false;
+    }
   };
 
   return (
@@ -51,7 +56,7 @@ function FullName() {
         </label>
         <button type="submit">Submit</button>
       </form>
-      <p>Full Name: {output}</p>
+      {fullname ? <p className="output">Full Name: {output}</p> : null}
     </div>
   );
 }
