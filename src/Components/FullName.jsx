@@ -6,10 +6,10 @@ function FullName() {
     lastName: "",
   });
 
-  console.log(formData);
+  //   console.log(formData);
 
   const [output, setOutput] = useState("");
-  let fullname = true;
+  const [filled, setFilled] = useState(true);
 
   const handleChange = (e) => {
     let name = e.target.name;
@@ -26,7 +26,8 @@ function FullName() {
       const result = formData.firstName + " " + formData.lastName;
       setOutput(result);
     } else {
-      fullname = false;
+      console.log("empty");
+      setFilled(false);
     }
   };
 
@@ -37,7 +38,7 @@ function FullName() {
         <label htmlFor="firstName">
           First Name:
           <input
-            required
+            // required
             name="firstName"
             type="text"
             onChange={handleChange}
@@ -47,7 +48,7 @@ function FullName() {
         <label htmlFor="lastName">
           Last Name:
           <input
-            required
+            // required
             name="lastName"
             type="text"
             onChange={handleChange}
@@ -56,7 +57,7 @@ function FullName() {
         </label>
         <button type="submit">Submit</button>
       </form>
-      {fullname ? <p className="output">Full Name: {output}</p> : null}
+      {filled ? <p className="output">Full Name: {output}</p> : null}
     </div>
   );
 }
