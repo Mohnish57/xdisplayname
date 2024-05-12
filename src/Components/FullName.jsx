@@ -23,10 +23,6 @@ function FullName() {
     e.preventDefault();
     const result = formData.firstName + " " + formData.lastName;
     setOutput(result);
-    setFormData({
-      firstName: "",
-      lastName: "",
-    });
   };
 
   return (
